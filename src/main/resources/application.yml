@@ -3,7 +3,7 @@ spring:
     mongodb:
       user: root
       password: root
-      uri: mongodb://localhost:27017/user
+      uri: mongodb://root:root@localhost:27017/user
 
 server:
   port: 8080

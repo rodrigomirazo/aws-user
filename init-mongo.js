@@ -1,7 +1,7 @@
 db.createUser(
         {
-            user: "usr1",
-            pwd: "usr1",
+            user: "root",
+            pwd: "root",
             roles: [
                 {
                     role: "readWrite",
@@ -10,3 +10,15 @@ db.createUser(
             ]
         }
 );
+
+db.user.insert({
+    id: "1",
+    firstName: "Rodrigo",
+    lastName: "mv"
+});
+
+db.user.insert({
+    id: "2",
+    firstName: "Tania",
+    lastName: "ro"
+});

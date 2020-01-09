@@ -5,6 +5,6 @@ import java.util.List;
 import com.aws.dev.cert.user.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepository extends MongoRepository<User, Integer> {
+public interface UserRepository extends MongoRepository<User, String> {
 
 }
