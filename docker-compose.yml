@@ -8,15 +8,14 @@ services:
       context: .
       dockerfile: dockerfile_users
     ports:
-      - "8081:8081"
-    extra_hosts:
-      - "DAYRHEPOSD001:10.7.35.67"
-      - "DAYRHEPOSQ001:10.7.35.68"
-    volumes:
-      - scantt-volume:/scantt_shared_volume
-    networks:
-      - scantt-network
-    entrypoint: ["java", "-Xms256m", "-Xmx512m", "-jar", "ttr-scantt-engine-instructions.jar", "--server.port=8081"]
+      - "8082:8082"
+    links:
+      - "mongo:mongohost"
+    entrypoint: ["java", "-Xms256m", "-Xmx512m", "-jar", "aws-user.jar",
+                  "--server.port=8082",
+                  "--spring.data.mongodb.username=root",
+                  "--spring.data.mongodb.password=root",
+                  "--spring.data.mongodb.uri=mongodb://mongohost:27017/user"]
 
   mongo:
     image: mongo
@@ -26,6 +25,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: user
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
 
   mongo-express:
     image: mongo-express
