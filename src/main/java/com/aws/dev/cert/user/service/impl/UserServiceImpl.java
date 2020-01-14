@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepo;
 
     @Override
-    public User findById(Integer userID) {
+    public User findById(String userID) {
 
         return this.userRepo.findById(userID)
                 .map(Arrays::asList).map(ArrayList::new)
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(String id) {
         this.userRepo.deleteById(id);
     }
 }

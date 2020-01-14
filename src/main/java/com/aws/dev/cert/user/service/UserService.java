@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
-    public User findById(Integer userID);
+    public User findById(String userID);
 
     public List<User> get();
 
@@ -15,6 +15,6 @@ public interface UserService {
 
     public void delete(User user);
 
-    public void deleteById(Integer id);
+    public void deleteById(String id);
 
 }
